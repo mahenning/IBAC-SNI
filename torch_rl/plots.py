@@ -27,7 +27,7 @@ plot_std_err = True
 # ylims = (4, 10)
 xlims = None
 max_step = 200000000
-path = "/home/t-maigl/results-cr/minigrid/{}/"
+path = os.path.abspath(os.getcwd())+"/storage/{}/"
 
 
 experiments = {
@@ -74,7 +74,7 @@ for key_idx, key in enumerate(experiments):
             if not filename.startswith('events'):
                 continue
             try:
-                for e in tf.train.summary_iterator(modified_path + filename):
+                for e in tf.compat.v1.train.summary_iterator(modified_path + filename):
                     for v in e.summary.value:
                         if v.tag == 'return_mean' and e.step <= max_step:
                             steps.append(e.step)
