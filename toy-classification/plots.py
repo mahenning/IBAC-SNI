@@ -62,6 +62,8 @@ x_label = r"Number of patterns $\omega^f$" if fixed_fpcs is None else "Number Da
 y_label = "Loss"
 
 for file in files:
+    if file == '.gitignore':
+        continue
     print(file)
 
     pattern = r'RUN[1-9]*_reg([a-z]+|none)_((?:[0-9]*[.])?[0-9]+|None|1e-[0-9]+)_DPs([0-9]+)_fpc([0-9]+)_seed([0-9]+)_saveFreq([0-9]+).npy'
